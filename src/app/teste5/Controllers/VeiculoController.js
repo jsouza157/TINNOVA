@@ -34,7 +34,16 @@ class VeiculoController {
 
     async listar(req, res) {
         try {
-            const veiculos = await _VeiculoService.listar(req.query.q);
+            const veiculos = await _VeiculoService.listar();
+            return res.status(200).json(veiculos);
+        } catch(err) {
+            return res.status(500).json(err.message);
+        }
+    }
+
+    async listarComFiltro(req, res) {
+        try {
+            const veiculos = await _VeiculoService.listarComFiltro(req.query.q);
             return res.status(200).json(veiculos);
         } catch(err) {
             return res.status(500).json(err.message);

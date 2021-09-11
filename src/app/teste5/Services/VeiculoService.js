@@ -13,7 +13,12 @@ class VeiculoService {
         return novoVeiculo;
     }
 
-    async listar(filtro) {
+    async listar() {
+        const veiculos = await Veiculo.findAll();
+        return veiculos;
+    }
+
+    async listarComFiltro(filtro) {
         var veiculos;
         switch(filtro) {
             case 'nao-vendidos':
