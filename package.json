@@ -1,0 +1,18 @@
+{
+  "name": "tinnova",
+  "version": "1.0.0",
+  "description": "Teste prático",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "nodemon ./src/app.js"
+  },
+  "author": "Jefferson Souza",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
