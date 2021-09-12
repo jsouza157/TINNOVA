@@ -1,10 +1,12 @@
 const sequelize = require('../config/database.js');
+const { Op } = require("sequelize");
 const Veiculo = require('../models/Veiculo.js');
+const moment = require('moment');
 
 class VeiculoService {
     constructor()
     {
-        this.marcas = ['FIAT', 'VOLKSWAGEN', 'RENAULT', 'PEUGEOT', 'NISSAN', 'HONDA', 'TOYOTA'];
+        this.marcas = ['FIAT', 'VOLKSWAGEN', 'RENAULT', 'PEUGEOT', 'NISSAN', 'HONDA', 'TOYOTA', 'FORD'];
     }
 
     async cadastrar(dados) {
@@ -35,6 +37,16 @@ class VeiculoService {
                         [sequelize.fn('COUNT', sequelize.col('marca')), 'total']
                       ],
                       group: 'marca'
+                });
+              break;
+            case 'ultima-semana':
+                let dateNow = new Date(Date.now());
+                veiculos = await Veiculo.findAll({
+                    where : {
+                        createdAt: {
+                            [Op.between]: [moment(dateNow).subtract(7, "days").format('YYYY-MM-DD HH:mm:ss'), moment(dateNow).format('YYYY-MM-DD HH:mm:ss')]
+                        }
+                    }
                 });
               break;
             default:
