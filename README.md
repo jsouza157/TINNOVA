@@ -23,4 +23,4 @@
 - após a conclusão do teste já podemos inicalizar o servidor ```npm run dev```
 - a documentação dos endpoints pode ser acessada através da seguinte rota : **http://localhost:3000/api-docs**
 
-Utilizamos como depnedencia global o Nodemon, Jest e Sequelize com o banco de dados SQLite.
+Utilizamos como dependência global o Nodemon, Jest e Sequelize com o banco de dados SQLite.
