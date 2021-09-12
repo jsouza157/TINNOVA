@@ -1,0 +1,158 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "TINNOVA",
+      "description": "API de veículos com swagger",
+      "version": "1.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/veiculos": {
+        "get": {
+          "description": "",
+          "operationId": "listar_veiculos",
+          "responses": {}
+        }
+      },
+      "/veiculo": {
+        "post": {
+          "description": "",
+          "operationId": "cadastrar_veiculos",
+          "parameters": [
+            {
+              "name": "veiculo",
+              "in": "body",
+              "description": "Nome do veículo <code>Siena</code>.",
+              "required": true,
+              "schema" : {
+                "type" : "string"
+              }
+            },
+            {
+              "name": "marca",
+              "in": "body",
+              "description": "Marca do veículo <code>FIAT</code>.",
+              "required": true,
+              "schema" : {
+                  "type" : "string"
+              },
+              "enum": ["FIAT", "VOLKSWAGEN", "RENAULT", "PEUGEOT", "NISSAN", "HONDA", "TOYOTA", "FORD"]
+            },
+            {
+                "name": "ano",
+                "in": "body",
+                "description": "Ano do veículo <code>2021</code>.",
+                "required": true,
+                "schema" : {
+                    "type" : "int"
+                }
+            },
+            {
+                "name": "descricao",
+                "in": "body",
+                "description": "Descrição do veículo <code>Em perfeito estado</code>.",
+                "required": true,
+                "schema" : {
+                    "type" : "string"
+                }
+            },
+            {
+                "name": "vendido",
+                "in": "body",
+                "description": "Carro foi vendido ? <code>true</code>.",
+                "required": true,
+                "schema" : {
+                    "type" : "bool"
+                }
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/veiculos/find": {
+        "get": {
+          "description": "",
+          "operationId": "listar_veiculos_com_filtro",
+          "responses": {},
+          "parameters": [
+            {
+              "name": "q",
+              "in": "query",
+              "description": "Escolha o filtro <code>nao-vendidos / por-fabricante / ultima-semana</code>.",
+              "required": false,
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          ]
+        }
+      },
+      "/veiculos/{id}": {
+        "get": {
+          "description": "",
+          "operationId": "exibir_veiculo_por_id",
+          "responses": {},
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Informe o id do veículo <code>1</code>.",
+              "required": true
+            }
+          ]
+        }
+      },
+      "/veiculos/{id_veiculo}": {
+        "patch": {
+          "description": "",
+          "operationId": "atualizar_veiculo_por_id",
+          "responses": {},
+          "parameters": [
+            {
+              "name": "id_veiculo",
+              "in": "path",
+              "description": "Informe o id do veículo <code>1</code>.",
+              "required": true
+            },
+            {
+                "name": "veiculo",
+                "in": "body",
+                "description": "Informe o nome do veículo <code>Siena</code>.",
+                "required": true
+            },
+            {
+                "name": "marca",
+                "in": "body",
+                "description": "Informe a marca do veículo <code>FIAT</code>.",
+                "required": true
+            },
+            {
+                "name": "ano",
+                "in": "body",
+                "description": "Informe o ano do veículo <code>2021</code>.",
+                "required": true
+            }
+          ]
+        }
+      },
+      "/veiculos/{id_veiculo_excluir}": {
+        "delete": {
+          "description": "",
+          "operationId": "excluir_veiculo_por_id",
+          "responses": {},
+          "parameters": [
+            {
+              "name": "id_veiculo_excluir",
+              "in": "path",
+              "description": "Informe o id do veículo <code>1</code>.",
+              "required": true
+            }
+          ]
+        }
+      }
+    }   
+}
